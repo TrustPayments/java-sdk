@@ -1,86 +1,3 @@
-[![Build Status](https://travis-ci.org/TrustPayments/java-sdk.svg?branch=master)](https://travis-ci.org/TrustPayments/java-sdk)
-
-# Trust Payments Java Library
-
-The Trust Payments Java library wraps around the Trust Payments API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
-
-
-## Documentation
-
-[Trust Payments Web Service API](https://ep.trustpayments.com/doc/api/web-service)
-
-## Requirements
-
-- Java 1.8+
-
-## Installation
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-<dependency>
-    <groupId>com.trustpayments</groupId>
-    <artifactId>trustpayments-java-sdk</artifactId>
-    <version>2.2.5</version>
-    <scope>compile</scope>
-</dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "com.trustpayments:trustpayments-java-sdk:2.2.5"
-```
-
-### Others
-
-At first generate the JAR by executing:
-
-```shell
-mvn clean package
-```
-
-Then manually install the following JARs:
-
-* `target/trustpayments-java-sdk-2.2.5.jar`
-* `target/lib/*.jar`
-
-## Usage
-The library needs to be configured with your account's space id, user id, and secret key which are available in your [Trust Payments
-account dashboard](https://ep.trustpayments.com/account/select). Set `space_id`, `user_id`, and `api_secret` to their values.
-
-### Configuring a Service
-
-```java
-package com.trustpayments.sdk.example;
-
-import com.trustpayments.sdk.ApiClient;
-import com.trustpayments.sdk.service.TransactionService;
-
-public class Example {
-
-    public static void main(String[] args) {
-
-        // API Configuration.
-        long spaceId = (Long) 405;
-        long userId = (Long) 512;
-        String secret = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
-        ApiClient apiClient = new ApiClient(userId, secret);
-
-        // Create API service instance.
-        TransactionService transactionService = apiClient.getTransactionService();
-
-    }
-}
-```
-
-To get started with sending transactions, please review the example below:
-
-```java
 package com.trustpayments.sdk.test;
 
 import com.trustpayments.sdk.ApiClient;
@@ -164,7 +81,7 @@ public class TransactionPaymentPageServiceTest {
     public void paymentPageUrlTest() {
         try {
             Transaction transaction = this.apiClient.getTransactionService().create(this.spaceId, this.getTransactionPayload());
-            String paymentPageUrl = this.apiClient.getTransactionPaymentPageService.paymentPageUrl(spaceId, transaction.getId());
+            String paymentPageUrl = this.apiClient.getTransactionPaymentPageService().paymentPageUrl(spaceId, transaction.getId());
             Assert.assertTrue(paymentPageUrl.contains("https://"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,12 +89,3 @@ public class TransactionPaymentPageServiceTest {
     }
 
 }
-
-```
-## Recommendation
-
-It is recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
-
-## License
-
-Please see the [license file](https://github.com/TrustPayments/java-sdk/blob/master/LICENSE) for more information.
