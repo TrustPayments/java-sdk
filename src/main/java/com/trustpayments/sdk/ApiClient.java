@@ -458,6 +458,14 @@ public class ApiClient {
         return this.transactionInvoiceService;
     }
     
+    private TransactionLightboxService transactionLightboxService;
+    public TransactionLightboxService getTransactionLightboxService() {
+        if (this.transactionLightboxService == null) {
+            this.transactionLightboxService = new TransactionLightboxService(this);
+        }
+        return this.transactionLightboxService;
+    }
+    
     private TransactionMobileSdkService transactionMobileSdkService;
     public TransactionMobileSdkService getTransactionMobileSdkService() {
         if (this.transactionMobileSdkService == null) {
