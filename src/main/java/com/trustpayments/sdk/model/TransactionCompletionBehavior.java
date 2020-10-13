@@ -31,23 +31,17 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * 
  */
-public enum RefundState {
+public enum TransactionCompletionBehavior {
   
-  CREATE("CREATE"),
+  COMPLETE_IMMEDIATELY("COMPLETE_IMMEDIATELY"),
   
-  SCHEDULED("SCHEDULED"),
+  COMPLETE_DEFERRED("COMPLETE_DEFERRED"),
   
-  PENDING("PENDING"),
-  
-  MANUAL_CHECK("MANUAL_CHECK"),
-  
-  FAILED("FAILED"),
-  
-  SUCCESSFUL("SUCCESSFUL");
+  USE_CONFIGURATION("USE_CONFIGURATION");
 
   private String value;
 
-  RefundState(String value) {
+  TransactionCompletionBehavior(String value) {
     this.value = value;
   }
 
@@ -62,8 +56,8 @@ public enum RefundState {
   }
 
   @JsonCreator
-  public static RefundState fromValue(String text) {
-    for (RefundState b : RefundState.values()) {
+  public static TransactionCompletionBehavior fromValue(String text) {
+    for (TransactionCompletionBehavior b : TransactionCompletionBehavior.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
