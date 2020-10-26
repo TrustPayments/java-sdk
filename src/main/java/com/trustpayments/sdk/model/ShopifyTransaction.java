@@ -24,8 +24,8 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.trustpayments.sdk.model.ChargeFlowLevelConfiguration;
-import com.trustpayments.sdk.model.ChargeFlowLevelState;
+import com.trustpayments.sdk.model.ShopifyIntegration;
+import com.trustpayments.sdk.model.ShopifyTransactionState;
 import com.trustpayments.sdk.model.Transaction;
 import com.trustpayments.sdk.model.TransactionAwareEntity;
 import io.swagger.annotations.ApiModel;
@@ -39,18 +39,26 @@ import java.time.OffsetDateTime;
  */
 @ApiModel(description = "")
 
-public class ChargeFlowLevel extends TransactionAwareEntity {
+public class ShopifyTransaction extends TransactionAwareEntity {
   
-  @JsonProperty("asynchronousCharge")
-  protected Long asynchronousCharge = null;
-
-  
-  @JsonProperty("configuration")
-  protected ChargeFlowLevelConfiguration _configuration = null;
+  @JsonProperty("checkoutId")
+  protected String checkoutId = null;
 
   
   @JsonProperty("createdOn")
   protected OffsetDateTime createdOn = null;
+
+  
+  @JsonProperty("integration")
+  protected ShopifyIntegration integration = null;
+
+  
+  @JsonProperty("orderId")
+  protected String orderId = null;
+
+  
+  @JsonProperty("orderName")
+  protected String orderName = null;
 
   
   @JsonProperty("plannedPurgeDate")
@@ -58,19 +66,7 @@ public class ChargeFlowLevel extends TransactionAwareEntity {
 
   
   @JsonProperty("state")
-  protected ChargeFlowLevelState state = null;
-
-  
-  @JsonProperty("synchronousCharge")
-  protected Long synchronousCharge = null;
-
-  
-  @JsonProperty("timeoutOn")
-  protected OffsetDateTime timeoutOn = null;
-
-  
-  @JsonProperty("tokenCharge")
-  protected Long tokenCharge = null;
+  protected ShopifyTransactionState state = null;
 
   
   @JsonProperty("transaction")
@@ -84,21 +80,11 @@ public class ChargeFlowLevel extends TransactionAwareEntity {
   
    /**
    * 
-   * @return asynchronousCharge
+   * @return checkoutId
   **/
   @ApiModelProperty(value = "")
-  public Long getAsynchronousCharge() {
-    return asynchronousCharge;
-  }
-
-  
-   /**
-   * 
-   * @return _configuration
-  **/
-  @ApiModelProperty(value = "")
-  public ChargeFlowLevelConfiguration getConfiguration() {
-    return _configuration;
+  public String getCheckoutId() {
+    return checkoutId;
   }
 
   
@@ -109,6 +95,36 @@ public class ChargeFlowLevel extends TransactionAwareEntity {
   @ApiModelProperty(value = "The created on date indicates the date on which the entity was stored into the database.")
   public OffsetDateTime getCreatedOn() {
     return createdOn;
+  }
+
+  
+   /**
+   * 
+   * @return integration
+  **/
+  @ApiModelProperty(value = "")
+  public ShopifyIntegration getIntegration() {
+    return integration;
+  }
+
+  
+   /**
+   * 
+   * @return orderId
+  **/
+  @ApiModelProperty(value = "")
+  public String getOrderId() {
+    return orderId;
+  }
+
+  
+   /**
+   * 
+   * @return orderName
+  **/
+  @ApiModelProperty(value = "")
+  public String getOrderName() {
+    return orderName;
   }
 
   
@@ -127,38 +143,8 @@ public class ChargeFlowLevel extends TransactionAwareEntity {
    * @return state
   **/
   @ApiModelProperty(value = "")
-  public ChargeFlowLevelState getState() {
+  public ShopifyTransactionState getState() {
     return state;
-  }
-
-  
-   /**
-   * 
-   * @return synchronousCharge
-  **/
-  @ApiModelProperty(value = "")
-  public Long getSynchronousCharge() {
-    return synchronousCharge;
-  }
-
-  
-   /**
-   * 
-   * @return timeoutOn
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getTimeoutOn() {
-    return timeoutOn;
-  }
-
-  
-   /**
-   * 
-   * @return tokenCharge
-  **/
-  @ApiModelProperty(value = "")
-  public Long getTokenCharge() {
-    return tokenCharge;
   }
 
   
@@ -191,45 +177,43 @@ public class ChargeFlowLevel extends TransactionAwareEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChargeFlowLevel chargeFlowLevel = (ChargeFlowLevel) o;
-    return Objects.equals(this.id, chargeFlowLevel.id) &&
-        Objects.equals(this.linkedSpaceId, chargeFlowLevel.linkedSpaceId) &&
-        Objects.equals(this.linkedTransaction, chargeFlowLevel.linkedTransaction) &&
-        Objects.equals(this.asynchronousCharge, chargeFlowLevel.asynchronousCharge) &&
-        Objects.equals(this._configuration, chargeFlowLevel._configuration) &&
-        Objects.equals(this.createdOn, chargeFlowLevel.createdOn) &&
-        Objects.equals(this.plannedPurgeDate, chargeFlowLevel.plannedPurgeDate) &&
-        Objects.equals(this.state, chargeFlowLevel.state) &&
-        Objects.equals(this.synchronousCharge, chargeFlowLevel.synchronousCharge) &&
-        Objects.equals(this.timeoutOn, chargeFlowLevel.timeoutOn) &&
-        Objects.equals(this.tokenCharge, chargeFlowLevel.tokenCharge) &&
-        Objects.equals(this.transaction, chargeFlowLevel.transaction) &&
-        Objects.equals(this.version, chargeFlowLevel.version) &&
+    ShopifyTransaction shopifyTransaction = (ShopifyTransaction) o;
+    return Objects.equals(this.id, shopifyTransaction.id) &&
+        Objects.equals(this.linkedSpaceId, shopifyTransaction.linkedSpaceId) &&
+        Objects.equals(this.linkedTransaction, shopifyTransaction.linkedTransaction) &&
+        Objects.equals(this.checkoutId, shopifyTransaction.checkoutId) &&
+        Objects.equals(this.createdOn, shopifyTransaction.createdOn) &&
+        Objects.equals(this.integration, shopifyTransaction.integration) &&
+        Objects.equals(this.orderId, shopifyTransaction.orderId) &&
+        Objects.equals(this.orderName, shopifyTransaction.orderName) &&
+        Objects.equals(this.plannedPurgeDate, shopifyTransaction.plannedPurgeDate) &&
+        Objects.equals(this.state, shopifyTransaction.state) &&
+        Objects.equals(this.transaction, shopifyTransaction.transaction) &&
+        Objects.equals(this.version, shopifyTransaction.version) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, linkedSpaceId, linkedTransaction, asynchronousCharge, _configuration, createdOn, plannedPurgeDate, state, synchronousCharge, timeoutOn, tokenCharge, transaction, version, super.hashCode());
+    return Objects.hash(id, linkedSpaceId, linkedTransaction, checkoutId, createdOn, integration, orderId, orderName, plannedPurgeDate, state, transaction, version, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChargeFlowLevel {\n");
+    sb.append("class ShopifyTransaction {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    linkedSpaceId: ").append(toIndentedString(linkedSpaceId)).append("\n");
     sb.append("    linkedTransaction: ").append(toIndentedString(linkedTransaction)).append("\n");
-    sb.append("    asynchronousCharge: ").append(toIndentedString(asynchronousCharge)).append("\n");
-    sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
+    sb.append("    checkoutId: ").append(toIndentedString(checkoutId)).append("\n");
     sb.append("    createdOn: ").append(toIndentedString(createdOn)).append("\n");
+    sb.append("    integration: ").append(toIndentedString(integration)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    orderName: ").append(toIndentedString(orderName)).append("\n");
     sb.append("    plannedPurgeDate: ").append(toIndentedString(plannedPurgeDate)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    synchronousCharge: ").append(toIndentedString(synchronousCharge)).append("\n");
-    sb.append("    timeoutOn: ").append(toIndentedString(timeoutOn)).append("\n");
-    sb.append("    tokenCharge: ").append(toIndentedString(tokenCharge)).append("\n");
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
