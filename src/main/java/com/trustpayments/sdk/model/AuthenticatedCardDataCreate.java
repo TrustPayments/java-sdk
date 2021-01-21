@@ -24,17 +24,20 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.trustpayments.sdk.model.CardCryptogramCreate;
+import com.trustpayments.sdk.model.CardholderAuthenticationCreate;
+import com.trustpayments.sdk.model.RecurringIndicator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.*;
 import java.time.OffsetDateTime;
 
 /**
- * This model holds the card data in plain.
+ * This model holds the card data and optional cardholder authentication details.
  */
-@ApiModel(description = "This model holds the card data in plain.")
+@ApiModel(description = "This model holds the card data and optional cardholder authentication details.")
 
-public class UnencryptedCardDataCreate {
+public class AuthenticatedCardDataCreate {
   
   @JsonProperty("cardHolderName")
   protected String cardHolderName = null;
@@ -42,6 +45,14 @@ public class UnencryptedCardDataCreate {
   
   @JsonProperty("cardVerificationCode")
   protected String cardVerificationCode = null;
+
+  
+  @JsonProperty("cardholderAuthentication")
+  protected CardholderAuthenticationCreate cardholderAuthentication = null;
+
+  
+  @JsonProperty("cryptogram")
+  protected CardCryptogramCreate cryptogram = null;
 
   
   @JsonProperty("expiryDate")
@@ -52,8 +63,16 @@ public class UnencryptedCardDataCreate {
   protected String primaryAccountNumber = null;
 
   
+  @JsonProperty("recurringIndicator")
+  protected RecurringIndicator recurringIndicator = null;
+
   
-  public UnencryptedCardDataCreate cardHolderName(String cardHolderName) {
+  @JsonProperty("tokenRequestorId")
+  protected String tokenRequestorId = null;
+
+  
+  
+  public AuthenticatedCardDataCreate cardHolderName(String cardHolderName) {
     this.cardHolderName = cardHolderName;
     return this;
   }
@@ -72,7 +91,7 @@ public class UnencryptedCardDataCreate {
   }
 
   
-  public UnencryptedCardDataCreate cardVerificationCode(String cardVerificationCode) {
+  public AuthenticatedCardDataCreate cardVerificationCode(String cardVerificationCode) {
     this.cardVerificationCode = cardVerificationCode;
     return this;
   }
@@ -91,7 +110,45 @@ public class UnencryptedCardDataCreate {
   }
 
   
-  public UnencryptedCardDataCreate expiryDate(String expiryDate) {
+  public AuthenticatedCardDataCreate cardholderAuthentication(CardholderAuthenticationCreate cardholderAuthentication) {
+    this.cardholderAuthentication = cardholderAuthentication;
+    return this;
+  }
+
+   /**
+   * The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+   * @return cardholderAuthentication
+  **/
+  @ApiModelProperty(value = "The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).")
+  public CardholderAuthenticationCreate getCardholderAuthentication() {
+    return cardholderAuthentication;
+  }
+
+  public void setCardholderAuthentication(CardholderAuthenticationCreate cardholderAuthentication) {
+    this.cardholderAuthentication = cardholderAuthentication;
+  }
+
+  
+  public AuthenticatedCardDataCreate cryptogram(CardCryptogramCreate cryptogram) {
+    this.cryptogram = cryptogram;
+    return this;
+  }
+
+   /**
+   * The additional authentication value used to secure the tokenized card transactions.
+   * @return cryptogram
+  **/
+  @ApiModelProperty(value = "The additional authentication value used to secure the tokenized card transactions.")
+  public CardCryptogramCreate getCryptogram() {
+    return cryptogram;
+  }
+
+  public void setCryptogram(CardCryptogramCreate cryptogram) {
+    this.cryptogram = cryptogram;
+  }
+
+  
+  public AuthenticatedCardDataCreate expiryDate(String expiryDate) {
     this.expiryDate = expiryDate;
     return this;
   }
@@ -110,7 +167,7 @@ public class UnencryptedCardDataCreate {
   }
 
   
-  public UnencryptedCardDataCreate primaryAccountNumber(String primaryAccountNumber) {
+  public AuthenticatedCardDataCreate primaryAccountNumber(String primaryAccountNumber) {
     this.primaryAccountNumber = primaryAccountNumber;
     return this;
   }
@@ -129,6 +186,44 @@ public class UnencryptedCardDataCreate {
   }
 
   
+  public AuthenticatedCardDataCreate recurringIndicator(RecurringIndicator recurringIndicator) {
+    this.recurringIndicator = recurringIndicator;
+    return this;
+  }
+
+   /**
+   * 
+   * @return recurringIndicator
+  **/
+  @ApiModelProperty(value = "")
+  public RecurringIndicator getRecurringIndicator() {
+    return recurringIndicator;
+  }
+
+  public void setRecurringIndicator(RecurringIndicator recurringIndicator) {
+    this.recurringIndicator = recurringIndicator;
+  }
+
+  
+  public AuthenticatedCardDataCreate tokenRequestorId(String tokenRequestorId) {
+    this.tokenRequestorId = tokenRequestorId;
+    return this;
+  }
+
+   /**
+   * 
+   * @return tokenRequestorId
+  **/
+  @ApiModelProperty(value = "")
+  public String getTokenRequestorId() {
+    return tokenRequestorId;
+  }
+
+  public void setTokenRequestorId(String tokenRequestorId) {
+    this.tokenRequestorId = tokenRequestorId;
+  }
+
+  
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -138,28 +233,36 @@ public class UnencryptedCardDataCreate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UnencryptedCardDataCreate unencryptedCardDataCreate = (UnencryptedCardDataCreate) o;
-    return Objects.equals(this.cardHolderName, unencryptedCardDataCreate.cardHolderName) &&
-        Objects.equals(this.cardVerificationCode, unencryptedCardDataCreate.cardVerificationCode) &&
-        Objects.equals(this.expiryDate, unencryptedCardDataCreate.expiryDate) &&
-        Objects.equals(this.primaryAccountNumber, unencryptedCardDataCreate.primaryAccountNumber);
+    AuthenticatedCardDataCreate authenticatedCardDataCreate = (AuthenticatedCardDataCreate) o;
+    return Objects.equals(this.cardHolderName, authenticatedCardDataCreate.cardHolderName) &&
+        Objects.equals(this.cardVerificationCode, authenticatedCardDataCreate.cardVerificationCode) &&
+        Objects.equals(this.cardholderAuthentication, authenticatedCardDataCreate.cardholderAuthentication) &&
+        Objects.equals(this.cryptogram, authenticatedCardDataCreate.cryptogram) &&
+        Objects.equals(this.expiryDate, authenticatedCardDataCreate.expiryDate) &&
+        Objects.equals(this.primaryAccountNumber, authenticatedCardDataCreate.primaryAccountNumber) &&
+        Objects.equals(this.recurringIndicator, authenticatedCardDataCreate.recurringIndicator) &&
+        Objects.equals(this.tokenRequestorId, authenticatedCardDataCreate.tokenRequestorId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cardHolderName, cardVerificationCode, expiryDate, primaryAccountNumber);
+    return Objects.hash(cardHolderName, cardVerificationCode, cardholderAuthentication, cryptogram, expiryDate, primaryAccountNumber, recurringIndicator, tokenRequestorId);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UnencryptedCardDataCreate {\n");
+    sb.append("class AuthenticatedCardDataCreate {\n");
     
     sb.append("    cardHolderName: ").append(toIndentedString(cardHolderName)).append("\n");
     sb.append("    cardVerificationCode: ").append(toIndentedString(cardVerificationCode)).append("\n");
+    sb.append("    cardholderAuthentication: ").append(toIndentedString(cardholderAuthentication)).append("\n");
+    sb.append("    cryptogram: ").append(toIndentedString(cryptogram)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    primaryAccountNumber: ").append(toIndentedString(primaryAccountNumber)).append("\n");
+    sb.append("    recurringIndicator: ").append(toIndentedString(recurringIndicator)).append("\n");
+    sb.append("    tokenRequestorId: ").append(toIndentedString(tokenRequestorId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
