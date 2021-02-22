@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.trustpayments'
-version = '2.2.21'
+version = '2.2.22'
 
 buildscript {
     repositories {
