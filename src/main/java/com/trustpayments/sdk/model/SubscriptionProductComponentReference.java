@@ -24,67 +24,48 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.trustpayments.sdk.model.Account;
-import com.trustpayments.sdk.model.DatabaseTranslatedString;
-import com.trustpayments.sdk.model.Permission;
-import com.trustpayments.sdk.model.RoleState;
+import com.trustpayments.sdk.model.SubscriptionProductComponentReferenceState;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.*;
 import java.time.OffsetDateTime;
 
 /**
- * 
+ * The product component reference binds components from different product versions together. By binding them together the product version migration can be realized.
  */
-@ApiModel(description = "")
+@ApiModel(description = "The product component reference binds components from different product versions together. By binding them together the product version migration can be realized.")
 
-public class Role {
-  
-  @JsonProperty("account")
-  protected Account account = null;
-
+public class SubscriptionProductComponentReference {
   
   @JsonProperty("id")
   protected Long id = null;
 
   
-  @JsonProperty("name")
-  protected DatabaseTranslatedString name = null;
+  @JsonProperty("linkedSpaceId")
+  protected Long linkedSpaceId = null;
 
   
-  @JsonProperty("permissions")
-  protected List<Permission> permissions = null;
+  @JsonProperty("name")
+  protected String name = null;
 
   
   @JsonProperty("plannedPurgeDate")
   protected OffsetDateTime plannedPurgeDate = null;
 
   
-  @JsonProperty("state")
-  protected RoleState state = null;
+  @JsonProperty("spaceId")
+  protected Long spaceId = null;
 
   
-  @JsonProperty("twoFactorRequired")
-  protected Boolean twoFactorRequired = null;
+  @JsonProperty("state")
+  protected SubscriptionProductComponentReferenceState state = null;
 
   
   @JsonProperty("version")
   protected Integer version = null;
 
   
-  
-   /**
-   * The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
-   * @return account
-  **/
-  @ApiModelProperty(value = "The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.")
-  public Account getAccount() {
-    return account;
-  }
-
   
    /**
    * The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -97,22 +78,22 @@ public class Role {
 
   
    /**
-   * The name of this role is used to identify the role within administrative interfaces.
-   * @return name
+   * The linked space id holds the ID of the space to which the entity belongs to.
+   * @return linkedSpaceId
   **/
-  @ApiModelProperty(value = "The name of this role is used to identify the role within administrative interfaces.")
-  public DatabaseTranslatedString getName() {
-    return name;
+  @ApiModelProperty(value = "The linked space id holds the ID of the space to which the entity belongs to.")
+  public Long getLinkedSpaceId() {
+    return linkedSpaceId;
   }
 
   
    /**
-   * Set of permissions that are granted to this role.
-   * @return permissions
+   * The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.
+   * @return name
   **/
-  @ApiModelProperty(value = "Set of permissions that are granted to this role.")
-  public List<Permission> getPermissions() {
-    return permissions;
+  @ApiModelProperty(value = "The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.")
+  public String getName() {
+    return name;
   }
 
   
@@ -128,21 +109,21 @@ public class Role {
   
    /**
    * 
-   * @return state
+   * @return spaceId
   **/
   @ApiModelProperty(value = "")
-  public RoleState getState() {
-    return state;
+  public Long getSpaceId() {
+    return spaceId;
   }
 
   
    /**
-   * Defines whether having been granted this role will force a user to use two-factor authentication.
-   * @return twoFactorRequired
+   * 
+   * @return state
   **/
-  @ApiModelProperty(value = "Defines whether having been granted this role will force a user to use two-factor authentication.")
-  public Boolean isTwoFactorRequired() {
-    return twoFactorRequired;
+  @ApiModelProperty(value = "")
+  public SubscriptionProductComponentReferenceState getState() {
+    return state;
   }
 
   
@@ -165,35 +146,33 @@ public class Role {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Role role = (Role) o;
-    return Objects.equals(this.account, role.account) &&
-        Objects.equals(this.id, role.id) &&
-        Objects.equals(this.name, role.name) &&
-        Objects.equals(this.permissions, role.permissions) &&
-        Objects.equals(this.plannedPurgeDate, role.plannedPurgeDate) &&
-        Objects.equals(this.state, role.state) &&
-        Objects.equals(this.twoFactorRequired, role.twoFactorRequired) &&
-        Objects.equals(this.version, role.version);
+    SubscriptionProductComponentReference subscriptionProductComponentReference = (SubscriptionProductComponentReference) o;
+    return Objects.equals(this.id, subscriptionProductComponentReference.id) &&
+        Objects.equals(this.linkedSpaceId, subscriptionProductComponentReference.linkedSpaceId) &&
+        Objects.equals(this.name, subscriptionProductComponentReference.name) &&
+        Objects.equals(this.plannedPurgeDate, subscriptionProductComponentReference.plannedPurgeDate) &&
+        Objects.equals(this.spaceId, subscriptionProductComponentReference.spaceId) &&
+        Objects.equals(this.state, subscriptionProductComponentReference.state) &&
+        Objects.equals(this.version, subscriptionProductComponentReference.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, id, name, permissions, plannedPurgeDate, state, twoFactorRequired, version);
+    return Objects.hash(id, linkedSpaceId, name, plannedPurgeDate, spaceId, state, version);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Role {\n");
+    sb.append("class SubscriptionProductComponentReference {\n");
     
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    linkedSpaceId: ").append(toIndentedString(linkedSpaceId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    plannedPurgeDate: ").append(toIndentedString(plannedPurgeDate)).append("\n");
+    sb.append("    spaceId: ").append(toIndentedString(spaceId)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    twoFactorRequired: ").append(toIndentedString(twoFactorRequired)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();

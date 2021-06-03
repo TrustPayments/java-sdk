@@ -24,39 +24,36 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.trustpayments.sdk.model.Account;
+import com.trustpayments.sdk.model.CreationEntityState;
 import com.trustpayments.sdk.model.DatabaseTranslatedString;
-import com.trustpayments.sdk.model.Permission;
-import com.trustpayments.sdk.model.RoleState;
+import com.trustpayments.sdk.model.SubscriptionMetricType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.*;
 import java.time.OffsetDateTime;
 
 /**
- * 
+ * A metric represents the usage of a resource that can be measured.
  */
-@ApiModel(description = "")
+@ApiModel(description = "A metric represents the usage of a resource that can be measured.")
 
-public class Role {
+public class SubscriptionMetric {
   
-  @JsonProperty("account")
-  protected Account account = null;
+  @JsonProperty("description")
+  protected DatabaseTranslatedString description = null;
 
   
   @JsonProperty("id")
   protected Long id = null;
 
   
-  @JsonProperty("name")
-  protected DatabaseTranslatedString name = null;
+  @JsonProperty("linkedSpaceId")
+  protected Long linkedSpaceId = null;
 
   
-  @JsonProperty("permissions")
-  protected List<Permission> permissions = null;
+  @JsonProperty("name")
+  protected DatabaseTranslatedString name = null;
 
   
   @JsonProperty("plannedPurgeDate")
@@ -64,11 +61,11 @@ public class Role {
 
   
   @JsonProperty("state")
-  protected RoleState state = null;
+  protected CreationEntityState state = null;
 
   
-  @JsonProperty("twoFactorRequired")
-  protected Boolean twoFactorRequired = null;
+  @JsonProperty("type")
+  protected SubscriptionMetricType type = null;
 
   
   @JsonProperty("version")
@@ -77,12 +74,12 @@ public class Role {
   
   
    /**
-   * The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
-   * @return account
+   * 
+   * @return description
   **/
-  @ApiModelProperty(value = "The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.")
-  public Account getAccount() {
-    return account;
+  @ApiModelProperty(value = "")
+  public DatabaseTranslatedString getDescription() {
+    return description;
   }
 
   
@@ -97,22 +94,22 @@ public class Role {
 
   
    /**
-   * The name of this role is used to identify the role within administrative interfaces.
-   * @return name
+   * The linked space id holds the ID of the space to which the entity belongs to.
+   * @return linkedSpaceId
   **/
-  @ApiModelProperty(value = "The name of this role is used to identify the role within administrative interfaces.")
-  public DatabaseTranslatedString getName() {
-    return name;
+  @ApiModelProperty(value = "The linked space id holds the ID of the space to which the entity belongs to.")
+  public Long getLinkedSpaceId() {
+    return linkedSpaceId;
   }
 
   
    /**
-   * Set of permissions that are granted to this role.
-   * @return permissions
+   * 
+   * @return name
   **/
-  @ApiModelProperty(value = "Set of permissions that are granted to this role.")
-  public List<Permission> getPermissions() {
-    return permissions;
+  @ApiModelProperty(value = "")
+  public DatabaseTranslatedString getName() {
+    return name;
   }
 
   
@@ -131,18 +128,18 @@ public class Role {
    * @return state
   **/
   @ApiModelProperty(value = "")
-  public RoleState getState() {
+  public CreationEntityState getState() {
     return state;
   }
 
   
    /**
-   * Defines whether having been granted this role will force a user to use two-factor authentication.
-   * @return twoFactorRequired
+   * 
+   * @return type
   **/
-  @ApiModelProperty(value = "Defines whether having been granted this role will force a user to use two-factor authentication.")
-  public Boolean isTwoFactorRequired() {
-    return twoFactorRequired;
+  @ApiModelProperty(value = "")
+  public SubscriptionMetricType getType() {
+    return type;
   }
 
   
@@ -165,35 +162,35 @@ public class Role {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Role role = (Role) o;
-    return Objects.equals(this.account, role.account) &&
-        Objects.equals(this.id, role.id) &&
-        Objects.equals(this.name, role.name) &&
-        Objects.equals(this.permissions, role.permissions) &&
-        Objects.equals(this.plannedPurgeDate, role.plannedPurgeDate) &&
-        Objects.equals(this.state, role.state) &&
-        Objects.equals(this.twoFactorRequired, role.twoFactorRequired) &&
-        Objects.equals(this.version, role.version);
+    SubscriptionMetric subscriptionMetric = (SubscriptionMetric) o;
+    return Objects.equals(this.description, subscriptionMetric.description) &&
+        Objects.equals(this.id, subscriptionMetric.id) &&
+        Objects.equals(this.linkedSpaceId, subscriptionMetric.linkedSpaceId) &&
+        Objects.equals(this.name, subscriptionMetric.name) &&
+        Objects.equals(this.plannedPurgeDate, subscriptionMetric.plannedPurgeDate) &&
+        Objects.equals(this.state, subscriptionMetric.state) &&
+        Objects.equals(this.type, subscriptionMetric.type) &&
+        Objects.equals(this.version, subscriptionMetric.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, id, name, permissions, plannedPurgeDate, state, twoFactorRequired, version);
+    return Objects.hash(description, id, linkedSpaceId, name, plannedPurgeDate, state, type, version);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Role {\n");
+    sb.append("class SubscriptionMetric {\n");
     
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    linkedSpaceId: ").append(toIndentedString(linkedSpaceId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    plannedPurgeDate: ").append(toIndentedString(plannedPurgeDate)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    twoFactorRequired: ").append(toIndentedString(twoFactorRequired)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
