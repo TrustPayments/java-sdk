@@ -373,6 +373,14 @@ public class ApiClient {
         return this.paymentTerminalTillService;
     }
     
+    private PaymentTerminalTransactionSummaryService paymentTerminalTransactionSummaryService;
+    public PaymentTerminalTransactionSummaryService getPaymentTerminalTransactionSummaryService() {
+        if (this.paymentTerminalTransactionSummaryService == null) {
+            this.paymentTerminalTransactionSummaryService = new PaymentTerminalTransactionSummaryService(this);
+        }
+        return this.paymentTerminalTransactionSummaryService;
+    }
+    
     private PermissionService permissionService;
     public PermissionService getPermissionService() {
         if (this.permissionService == null) {
@@ -643,6 +651,14 @@ public class ApiClient {
             this.transactionLightboxService = new TransactionLightboxService(this);
         }
         return this.transactionLightboxService;
+    }
+    
+    private TransactionLineItemVersionService transactionLineItemVersionService;
+    public TransactionLineItemVersionService getTransactionLineItemVersionService() {
+        if (this.transactionLineItemVersionService == null) {
+            this.transactionLineItemVersionService = new TransactionLineItemVersionService(this);
+        }
+        return this.transactionLineItemVersionService;
     }
     
     private TransactionMobileSdkService transactionMobileSdkService;
