@@ -5,7 +5,7 @@
     <artifactId>trustpayments-java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>trustpayments-java-sdk</name>
-    <version>4.0.5</version>
+    <version>4.0.6</version>
     <url>https://www.trustpayments.com/</url>
     <description>The SDK for simplifying the integration with Trust Payments API.</description>
     <scm>
