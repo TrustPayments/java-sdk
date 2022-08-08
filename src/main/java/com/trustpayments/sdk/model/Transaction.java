@@ -31,7 +31,6 @@ import com.trustpayments.sdk.model.Environment;
 import com.trustpayments.sdk.model.FailureReason;
 import com.trustpayments.sdk.model.LineItem;
 import com.trustpayments.sdk.model.PaymentConnectorConfiguration;
-import com.trustpayments.sdk.model.PaymentMethodBrand;
 import com.trustpayments.sdk.model.PaymentTerminal;
 import com.trustpayments.sdk.model.Token;
 import com.trustpayments.sdk.model.TokenizationMode;
@@ -67,7 +66,7 @@ public class Transaction {
 
   
   @JsonProperty("allowedPaymentMethodBrands")
-  protected List<PaymentMethodBrand> allowedPaymentMethodBrands = null;
+  protected List<Long> allowedPaymentMethodBrands = null;
 
   
   @JsonProperty("allowedPaymentMethodConfigurations")
@@ -364,7 +363,7 @@ public class Transaction {
    * @return allowedPaymentMethodBrands
   **/
   @ApiModelProperty(value = "")
-  public List<PaymentMethodBrand> getAllowedPaymentMethodBrands() {
+  public List<Long> getAllowedPaymentMethodBrands() {
     return allowedPaymentMethodBrands;
   }
 
