@@ -23,7 +23,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.trustpayments</groupId>
     <artifactId>trustpayments-java-sdk</artifactId>
-    <version>4.0.7</version>
+    <version>4.0.8</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -33,7 +33,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.trustpayments:trustpayments-java-sdk:4.0.7"
+compile "com.trustpayments:trustpayments-java-sdk:4.0.8"
 ```
 
 ### Others
@@ -46,7 +46,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/trustpayments-java-sdk-4.0.7.jar`
+* `target/trustpayments-java-sdk-4.0.8.jar`
 * `target/lib/*.jar`
 
 ## Usage
